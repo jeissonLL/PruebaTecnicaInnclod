@@ -5,7 +5,7 @@ PruebaTecnicaInnclod_v1
 
 
 ***
-- Descargue la aplicación por medio del siguiente enlace de github:  Asegúrese que el proyecto quede en la siguiente ruta C:\xampp\htdocs.
+- Descargue la aplicación por medio del siguiente enlace de github: https://github.com/jeissonLL/PruebaTecnicaInnclod/tree/main Asegúrese que el proyecto quede en la siguiente ruta C:\xampp\htdocs.
 - Clone el proyecto y ahora migre la base de datos llamada **db_inncloud.sql** Esta base de datos esta creada en el gestor MySql con el servidor XAMPP.
 - Si va hacer uso del servidor XAMPP debe tener en cuenta que para correr el servidor debe seleccionar la opción **Start**  y asegurarse que este en color verde de lo contrario, configure los puertos del servidor.
 - Ahora seleccione la opción **admin** la que esta en el apartado del servidor MySql, se abrirá el administrador de base de datos y importe la base de datos que descargo anteriormente. Seleccione la opción Importar, seleccione la opción seleccionar archivo y luego de click en el botón importar que se ubica en la parte baja.
