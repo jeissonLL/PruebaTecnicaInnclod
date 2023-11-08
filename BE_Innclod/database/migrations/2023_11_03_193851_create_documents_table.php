@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
-            $table->string('doc_name', 60);
-            $table->string('doc_prefix', 20);
+            $table->string('tip_doc_name', 60);
+            $table->string('tip_doc_prefix', 20);
             $table->timestamps();
         });
     }

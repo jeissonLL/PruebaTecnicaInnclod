@@ -10,7 +10,7 @@ class Document extends Model
     use HasFactory;
 
     protected $fillble = [
-        'doc_name',
-        'doc_prefix'
+        'tip_doc_name',
+        'tip_doc_prefix'
     ];
 }

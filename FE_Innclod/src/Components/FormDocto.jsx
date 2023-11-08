@@ -1,6 +1,7 @@
 import React, {useEffect, useState, useRef} from 'react';
 import {sendRequest} from '../functions';
 import DivInput from './DivInput';
+import { Link } from 'react-router-dom';
 
 const FormDep = (params) => {
     const [name, setName] = useState('');
@@ -17,8 +18,8 @@ const FormDep = (params) => {
     const getDocuments = async () => {
         if(params.id !== null) {
             const res = await sendRequest('GET', '', (url+'/'+params.id));
-            setName(res.doc_name),
-            setPrefix(res.doc_prefix);
+            setName(res.tip_doc_name),
+            setPrefix(res.tip_doc_prefix);
         }
     }
     const save = async (e) => {
@@ -29,7 +30,7 @@ const FormDep = (params) => {
             url = '/api/document/'+params.id;
             redirect = '/documents';
         }
-        const res = await sendRequest(method, {doc_prefix: prefix, doc_name: name}, url, redirect);
+        const res = await sendRequest(method, {tip_doc_prefix: prefix, tip_doc_name: name}, url, redirect);
         if(method == 'POST' && res.status == true){
             setName(''),
             setPrefix('');
@@ -51,10 +52,12 @@ const FormDep = (params) => {
                             required='required' ref={prefixInput} handleChange={(e) => setPrefix(e.target.value)}/>
                             <div className='d-grid col-10 mx-auto'>
                                 <button className='btn btn-dark'>
-                                    <i className='fa-solid fa-save'></i>
-                                Salvar</button>
+                                    <i className='fa-solid fa-save'></i> Salvar</button>
                             </div>
                         </form>
+                        <Link to='/documents'>
+                            <i class="fa-solid fa-backward"></i> Regresar
+                        </Link>
                     </div>
                 </div>
             </div>

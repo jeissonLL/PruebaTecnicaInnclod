@@ -50,7 +50,7 @@ const ProcessDocuments = () => {
       setDocument(res);
     }
     const deleteProcessDocument = (id, name) => {
-      confimation(name, '/api/process_document/'+setId(id), 'ProcessDocuments');
+      confimation(name, '/api/process_document/'+id, 'process_document');
     }
     const clear = () =>{
       setName('');
@@ -66,8 +66,6 @@ const ProcessDocuments = () => {
       setId(dp);
       if(op == 1){
         setTitle('Create document process');
-        setIdProcesse(1);
-        setidDocument(1);
       }
       else{ 
         setTitle('Update document process');
@@ -89,7 +87,7 @@ const ProcessDocuments = () => {
       }
       
       const form = {doc_name: name, doc_code: code, doc_content: content, id_process: idProcesse, id_document: idDocument};
-      const  res = await sendRequest(method, form, url, '');
+      const  res = await sendRequest(method, form, url, '/process_document');
       if(method == 'PUT' && res.status == true){
         close.current.click();
       }
@@ -128,13 +126,13 @@ const ProcessDocuments = () => {
               <tr key={row.id}>
                 <td>{(i+1)}</td>
                 <td>{row.doc_name}</td>
-                <td>{row.doc_prefix} {' - '} {row.pro_prefix} {' - '} {row.doc_code}</td>
+                <td>{row.tip_doc_prefix} {' - '} {row.pro_prefix} {' - '} {row.doc_code}</td>
                 <td>{row.doc_content}</td>
                 <td>{row.pro_prefix}</td>
-                <td>{row.doc_prefix}</td>
+                <td>{row.tip_doc_prefix}</td>
                 <td>
                 <button className='btn btn-warning' data-bs-toggle='modal' data-bs-target='#modalProcessDocuments'
-                onClick={()=>openModal(2, row.doc_name, row.doc_code, row.doc_content, row.pro_prefix, row.doc_prefix, row.id)}>
+                onClick={()=>openModal(2, row.doc_name, row.doc_code, row.doc_content, row.id_process, row.id_document, row.id)}>
                 <i className='fa-solid fa-edit'></i> 
                 </button>
                 </td>
@@ -154,26 +152,20 @@ const ProcessDocuments = () => {
       <Modal title={title} modal='modalProcessDocuments'>
         <div className='modal-body'>
             <form onSubmit={save}>
-              <DivInput type='text' icon='fa-user' value={name}
-              className='form-control' placeholder='Name' required='required'
+              <DivInput type='text' icon='fa-graduation-cap' value={name}
+              className='form-control' placeholder='Nombre del curso' required='required'
               handleChange={ (e)=> setName(e.target.value)}/>
-              <DivInput type='number' icon='fa-user' value={code}
-              className='form-control' placeholder='code' required='required'
+              <DivInput type='number' icon='fa-hashtag' value={code}
+              className='form-control' placeholder='Codigo' required='required'
               handleChange={ (e)=> setCode(e.target.value)}/>
-              <DivInput type='text' icon='fa-user' value={content}
-              className='form-control' placeholder='content' required='required'
+              <DivInput type='text' icon='fa-comment' value={content}
+              className='form-control' placeholder='Indique un Comentario' required='required'
               handleChange={ (e)=> setContent(e.target.value)}/>
-              {/* <DivSelect icon='fa-user' required='required' value={idDocument} 
-              className='form-select' options={document}
-              handleChange={ (e)=> setidDocument(e.target.value)}/> */}
-              {/* <DivSelect icon='fa-user' required='required' value={idProcesse} 
-              className='form-select' options={processes}
-              handleChange={ (e)=> setIdProcesse(e.target.value)}/> */}
 
               <div className='input-group mb-3'>
                   <select className='form-select' required='required' value={idDocument} onChange={(e) => setidDocument(e.target.value)}>
                     { document.map( (op) => (
-                            <option value={op.id} key={op.id}>{op.doc_prefix}</option>
+                            <option value={op.id} key={op.id}>{op.tip_doc_prefix}</option>
                       ))}
                   </select>
               </div>

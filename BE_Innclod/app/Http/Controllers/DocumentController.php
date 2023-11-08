@@ -16,8 +16,8 @@ class DocumentController extends Controller
     public function store(Request $request)
     {
         $document = new Document();
-        $document->doc_name = $request->doc_name;
-        $document->doc_prefix = $request->doc_prefix;
+        $document->tip_doc_name = $request->tip_doc_name;
+        $document->tip_doc_prefix = $request->tip_doc_prefix;
         $document->save();
         return response()->json([
             'status' => 'true',
@@ -32,8 +32,8 @@ class DocumentController extends Controller
 
     public function update(Request $request, Document $document)
     {
-        $document->doc_name = $request->doc_name;
-        $document->doc_prefix = $request->doc_prefix;
+        $document->tip_doc_name = $request->tip_doc_name;
+        $document->tip_doc_prefix = $request->tip_doc_prefix;
         $document->save();
         return response()->json([
             'status' => 'true',

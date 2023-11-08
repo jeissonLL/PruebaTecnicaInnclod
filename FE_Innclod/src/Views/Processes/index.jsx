@@ -17,8 +17,8 @@ const processes = () => {
     setClassTable('');
     setClassLoad('d-none');
   }
-  const deleteProcese = (id, pro_name, pro_prefix) => {
-    confimation(pro_name, pro_prefix,('/api/process/' + id, '/'));
+  const deleteProcese = (id, name) => {
+    confimation(name, ('/api/process/' + id, '/'));
   }
   return (
     <div className='container-fluid'>
@@ -43,7 +43,7 @@ const processes = () => {
                 </td>
                 <td>
                   <button className='btn btn-danger'
-                    onClick={() => deleteProcese(row.id, row.pro_name, row.pro_prefix)}>
+                    onClick={()=> deleteProcese(row.id, row.pro_name)}>
                       <i className='fa-solid fa-trash'></i>
                   </button>
                 </td>

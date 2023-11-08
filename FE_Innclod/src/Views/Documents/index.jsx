@@ -34,8 +34,8 @@ const Documents = () => {
             {processes.map((row, i) =>(
               <tr key={row.id}>
                 <td>{(i+1)}</td>
-                <td>{row.doc_name}</td>
-                <td>{row.doc_prefix}</td>
+                <td>{row.tip_doc_name}</td>
+                <td>{row.tip_doc_prefix}</td>
                 <td>
                   <Link to={'/editDocto/'+row.id} className='btn btn-warning'>
                     <i className='fa-solid fa-edit'></i>

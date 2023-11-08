@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-11-2023 a las 15:24:43
+-- Tiempo de generación: 08-11-2023 a las 13:49:18
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.0.28
 
@@ -29,8 +29,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `documents` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `doc_name` varchar(60) NOT NULL,
-  `doc_prefix` varchar(20) NOT NULL,
+  `tip_doc_name` varchar(60) NOT NULL,
+  `tip_doc_prefix` varchar(20) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -39,12 +39,12 @@ CREATE TABLE `documents` (
 -- Volcado de datos para la tabla `documents`
 --
 
-INSERT INTO `documents` (`id`, `doc_name`, `doc_prefix`, `created_at`, `updated_at`) VALUES
-(1, 'Instructivo', 'INS', '2023-11-05 19:09:13', '2023-11-05 19:26:43'),
-(2, 'Capacitacion', 'CPC', '2023-11-06 15:59:39', '2023-11-06 15:59:39'),
-(3, 'Aprendizaje', 'APD', '2023-11-06 20:33:02', '2023-11-06 20:33:02'),
-(4, 'Inducción', 'IND', '2023-11-06 22:33:54', '2023-11-06 22:33:54'),
-(5, 'Formación', 'FMO', '2023-11-06 22:34:40', '2023-11-06 22:34:40');
+INSERT INTO `documents` (`id`, `tip_doc_name`, `tip_doc_prefix`, `created_at`, `updated_at`) VALUES
+(3, 'Arquitectura', 'ART', '2023-11-07 22:22:55', '2023-11-07 22:22:55'),
+(4, 'Construccion', 'CONS', '2023-11-07 23:10:32', '2023-11-08 17:25:52'),
+(5, 'Ingenieria', 'ING', '2023-11-08 17:18:07', '2023-11-08 17:25:00'),
+(6, 'ARTE', 'ART', '2023-11-08 17:26:47', '2023-11-08 17:26:47'),
+(7, 'Comunicación', 'COM', '2023-11-08 17:27:45', '2023-11-08 17:27:45');
 
 -- --------------------------------------------------------
 
@@ -79,13 +79,13 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(35, '2014_10_12_000000_create_users_table', 1),
-(36, '2014_10_12_100000_create_password_resets_table', 1),
-(37, '2019_08_19_000000_create_failed_jobs_table', 1),
-(38, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(39, '2023_11_03_193817_create_processes_table', 1),
-(40, '2023_11_03_193851_create_documents_table', 1),
-(41, '2023_11_03_230831_create_process_documents_table', 1);
+(42, '2014_10_12_000000_create_users_table', 1),
+(43, '2014_10_12_100000_create_password_resets_table', 1),
+(44, '2019_08_19_000000_create_failed_jobs_table', 1),
+(45, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(46, '2023_11_03_193817_create_processes_table', 1),
+(47, '2023_11_03_193851_create_documents_table', 1),
+(48, '2023_11_03_230831_create_process_documents_table', 1);
 
 -- --------------------------------------------------------
 
@@ -118,6 +118,14 @@ CREATE TABLE `personal_access_tokens` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `personal_access_tokens`
+--
+
+INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `name`, `token`, `abilities`, `last_used_at`, `expires_at`, `created_at`, `updated_at`) VALUES
+(1, 'App\\Models\\User', 1, 'API TOKEN', '005bf14362124ebd1d1cbdf1e03691c2418d515ebf1d6d87886aaa6eddc3eb6e', '[\"*\"]', NULL, NULL, '2023-11-07 22:07:04', '2023-11-07 22:07:04'),
+(2, 'App\\Models\\User', 1, 'API TOKEN', '3b292b42fd2a179b8e7d8fe12910e4a0f79a85f42ff11c627581cc3d922ec4e4', '[\"*\"]', '2023-11-08 17:46:58', NULL, '2023-11-07 22:07:27', '2023-11-08 17:46:58');
+
 -- --------------------------------------------------------
 
 --
@@ -137,11 +145,12 @@ CREATE TABLE `processes` (
 --
 
 INSERT INTO `processes` (`id`, `pro_prefix`, `pro_name`, `created_at`, `updated_at`) VALUES
-(1, 'ING', 'Ingenieria', '2023-11-04 21:38:56', '2023-11-05 19:25:08'),
-(2, 'DTD', 'Doctorado', '2023-11-05 03:54:11', '2023-11-05 03:54:34'),
-(3, 'TEC', 'Tecnologo', '2023-11-05 19:07:22', '2023-11-05 19:07:22'),
-(4, 'TEC', 'Tecnico', '2023-11-06 22:35:08', '2023-11-06 22:35:08'),
-(5, 'ETD', 'Estudiante', '2023-11-06 22:35:30', '2023-11-06 22:35:30');
+(1, 'CPC', 'Capacitacion', '2023-11-07 22:08:34', '2023-11-07 22:08:34'),
+(2, 'MTR', 'Master', '2023-11-07 23:09:28', '2023-11-07 23:09:28'),
+(3, 'ESP', 'Especialización', '2023-11-07 23:35:38', '2023-11-08 16:58:28'),
+(4, 'IND', 'Induccion', '2023-11-08 16:36:22', '2023-11-08 16:36:22'),
+(5, 'INS', 'Instructivo', '2023-11-08 16:57:23', '2023-11-08 16:57:23'),
+(6, 'APR', 'Aprendizaje', '2023-11-08 17:00:56', '2023-11-08 17:04:24');
 
 -- --------------------------------------------------------
 
@@ -165,11 +174,9 @@ CREATE TABLE `process_documents` (
 --
 
 INSERT INTO `process_documents` (`id`, `doc_name`, `doc_code`, `doc_content`, `id_process`, `id_document`, `created_at`, `updated_at`) VALUES
-(3, 'Aprendizaje', 2, 'Cursos de aprendices', 2, 2, '2023-11-06 18:22:28', '2023-11-06 18:22:28'),
-(6, 'Ingenieria', 5, 'Capoacitacion de ingenieros', 3, 2, '2023-11-06 20:49:54', '2023-11-06 20:49:54'),
-(7, 'Arquitectura', 3, 'Clases de arquitectura', 1, 2, '2023-11-06 20:52:05', '2023-11-06 20:52:05'),
-(14, 'Introduccion', 1, 'Introduccion', 3, 2, '2023-11-07 00:23:01', '2023-11-07 00:23:01'),
-(15, 'Ingenieria', 6, 'Clases de ingenieria', 1, 2, '2023-11-07 05:01:15', '2023-11-07 05:01:15');
+(4, 'Capacitacion a profecionales', 4, 'Ingenierias', 2, 4, '2023-11-07 23:11:16', '2023-11-07 23:11:16'),
+(5, 'Capacitacionnes', 3, 'Pruebas', 1, 3, '2023-11-08 01:42:47', '2023-11-08 01:42:47'),
+(7, 'Reuniones regionales', 6, 'Reuniones para capacitación a profesionales', 3, 5, '2023-11-08 17:29:35', '2023-11-08 17:29:35');
 
 -- --------------------------------------------------------
 
@@ -193,7 +200,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(3, 'admin', 'admin@gmail.com', NULL, '$2y$10$FBFsvjVib4SqHenTTDs0ee4/3ic7n46p/OasenNA2s8L8SPHXzV7S', NULL, '2023-11-07 03:21:47', '2023-11-07 03:21:47');
+(1, 'admin', 'admin@gmail.com', NULL, '$2y$10$qr3LJsYW3iKJVR8sN7qXzO2A1YJk6c8clnUdIkmXrob0G5HhKYnXm', NULL, '2023-11-07 22:07:04', '2023-11-07 22:07:04');
 
 --
 -- Índices para tablas volcadas
@@ -261,7 +268,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `documents`
 --
 ALTER TABLE `documents`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `failed_jobs`
@@ -273,31 +280,31 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT de la tabla `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT de la tabla `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `processes`
 --
 ALTER TABLE `processes`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `process_documents`
 --
 ALTER TABLE `process_documents`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas

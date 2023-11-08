@@ -1,6 +1,7 @@
 import React, {useEffect, useState, useRef} from 'react';
 import {sendRequest} from '../functions';
 import DivInput from './DivInput';
+import { Link } from 'react-router-dom';
 
 const FormDep = (params) => {
     const [name, setName] = useState('');
@@ -53,6 +54,9 @@ const FormDep = (params) => {
                                     <i className='fa-solid fa-save'></i>
                                 Salvar</button>
                             </div>
+                            <Link to='/documents'>
+                                <i class="fa-solid fa-backward"></i> Regresar
+                            </Link>
                         </form>
                     </div>
                 </div>
