@@ -54,7 +54,7 @@ const FormDep = (params) => {
                                     <i className='fa-solid fa-save'></i>
                                 Salvar</button>
                             </div>
-                            <Link to='/documents'>
+                            <Link to='/process'>
                                 <i class="fa-solid fa-backward"></i> Regresar
                             </Link>
                         </form>

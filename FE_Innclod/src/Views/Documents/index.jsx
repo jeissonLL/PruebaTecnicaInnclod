@@ -17,8 +17,8 @@ const Documents = () => {
     setClassTable('');
     setClassLoad('d-none');
   }
-  const deleteProcese = (id) => {
-    confimation(('/api/document/' + id, '/'));
+  const deleteProcese = (id, name) => {
+    confimation(name, '/api/document/' + id, '/documents');
   }
   return (
     <div className='container-fluid'>
@@ -43,7 +43,7 @@ const Documents = () => {
                 </td>
                 <td>
                   <button className='btn btn-danger'
-                    onClick={() => deleteProcese(row.id)}>
+                    onClick={() => deleteProcese(row.id, row.tip_doc_name)}>
                       <i className='fa-solid fa-trash'></i>
                   </button>
                 </td>

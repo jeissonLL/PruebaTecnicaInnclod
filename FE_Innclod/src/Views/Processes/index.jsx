@@ -18,7 +18,7 @@ const processes = () => {
     setClassLoad('d-none');
   }
   const deleteProcese = (id, name) => {
-    confimation(name, ('/api/process/' + id, '/'));
+    confimation(name, '/api/process/' + id, '/process');
   }
   return (
     <div className='container-fluid'>
